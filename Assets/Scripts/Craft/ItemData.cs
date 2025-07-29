@@ -1,14 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Item_",menuName = "CreateItem_Craft", order = 51)]
+[CreateAssetMenu(fileName = "Item_", menuName = "CreateItem_Craft", order = 51)]
 public class ItemData : ScriptableObject
 {
-    [Header("Item")]
-    public byte ItemID;
-    public RecipeType RecipeType;
-    public string ItemName;
-    public string Description;
-    public Image Image;
-    
+    [Header("ItemInfo")]
+    public byte ID;
+    public string Name;
+    [TextArea(2, 4)] public string Description;
+    public Sprite Sprite;
+
+    [Header("ItemTypeAndStack")]
+    public ItemTypes Type;
+    public int MaxStackSize;
+
+
+
+
 }

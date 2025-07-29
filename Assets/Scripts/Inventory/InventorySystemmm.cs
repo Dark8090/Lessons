@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySystem : MonoBehaviour
+public class InventorySystemmm : MonoBehaviour
 {
     [SerializeField] private int countSlots;
     [SerializeField] private GameObject slotPrefab;
