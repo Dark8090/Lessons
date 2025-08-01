@@ -1,6 +1,6 @@
 public enum RecipeType
 {
     Alchemist,
-    Normal,
+    Common,
     Blacksmithing
 }

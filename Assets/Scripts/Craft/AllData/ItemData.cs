@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     public string Name;
     [TextArea(2, 4)] public string Description;
     public Sprite Sprite;
+    public Item itemPrefab;
 
     [Header("ItemTypeAndStack")]
     public ItemTypes Type;

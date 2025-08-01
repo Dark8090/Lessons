@@ -1,30 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
-public class InventorySlot : MonoBehaviour  
+
+public class InventorySlot : MonoBehaviour
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private Text countText;
     [SerializeField] private GameObject slot;
-    [SerializeField] private bool isEmpty;
+    [SerializeField] private bool isEmpty = true;
 
-    private Item item;
+    [SerializeField] private Item item;
 
-    public void SetSlot(Item newItem)
+    [SerializeField] private Image bufferSprite;
+
+
+
+
+
+    public void SetSlot(Item newItem, int amount)
     {
         item = newItem;
 
         if (newItem != null)
         {
             iconImage.sprite = newItem.Sprite;
-            iconImage.enabled = true;
+            isEmpty = false;
 
             if (newItem.ItemData.MaxStackSize > 1)
             {
+                newItem.Amount = amount;
                 countText.text = newItem.Amount.ToString();
                 countText.enabled = true;
             }
@@ -32,18 +40,19 @@ public class InventorySlot : MonoBehaviour
             {
                 countText.enabled = false;
             }
-
-            //slot.SetActive(true);
-
+        }
+        else
+        {
+            isEmpty = true;
         }
     }
 
     public void ClearSlot()
     {
-        item = null;
-        //slot.SetActive(false);
-        iconImage.sprite = null;
+        iconImage.sprite = bufferSprite.sprite;
         countText.text = null;
+        item = null;
+
     }
     public void UpdateCount()
     {
@@ -53,5 +62,28 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+    public void UpdateAllInfo()
+    {
+        if (item != null)
+        {
+            //iconImage.sprite = item.Sprite;
+            //if (item.ItemData.MaxStackSize > 1)
+            //{
+            //    countText.text = item.Amount.ToString();
+            //    countText.enabled = true;
+            //}
+            //else
+            //{
+            //    countText.enabled = false;
+            //}
+
+        }
+        else
+        {
+            ClearSlot();
+        }
+    }
+
     public Item GetItem() => item;
+    public bool IsEmpty => isEmpty;
 }
