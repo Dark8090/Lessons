@@ -17,6 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aaf9ef18f046fed4b96557678e4280fd, type: 2}
   - {fileID: 11400000, guid: 2ee1250504a30cd459de40ca4da46781, type: 2}
   RequiredAmountsForCraft: 0100000002000000
-  checkRequiredItem: 0101
+  checkRequiredItem: 0000
   ResultItem: {fileID: 5090707058246173873, guid: d2d8012c9887b0b459397e4bc6dd84e7, type: 3}
   ResultAmountItem: 1

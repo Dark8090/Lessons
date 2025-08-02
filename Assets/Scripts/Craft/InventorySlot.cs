@@ -25,18 +25,24 @@ public class InventorySlot : MonoBehaviour
     {
         item = newItem;
 
-        if (newItem != null)
+        if (item != null)
         {
-            iconImage.sprite = newItem.Sprite;
+            iconImage.sprite = item.Sprite;
             isEmpty = false;
+            item.Amount = amount;
 
-            if (newItem.ItemData.MaxStackSize > 1)
+            if (item.ItemData.MaxStackSize > 1)
             {
-                newItem.Amount = amount;
-                countText.text = newItem.Amount.ToString();
+                
+                countText.text = item.Amount.ToString();
                 countText.enabled = true;
             }
             else
+            {
+                countText.enabled = false;
+            }
+
+            if (amount <= 1)
             {
                 countText.enabled = false;
             }
@@ -49,9 +55,28 @@ public class InventorySlot : MonoBehaviour
 
     public void ClearSlot()
     {
+        item.Amount = 0;
         iconImage.sprite = bufferSprite.sprite;
-        countText.text = null;
+        countText.text = "";
         item = null;
+    }
+
+    public void RemoveItem(int amountToRemove)
+    {
+
+        if (item == null || item.Amount <= 0)
+        {
+            return;
+        }
+        item.Amount -= amountToRemove;
+        if (item.Amount <= 0)
+        {
+            ClearSlot();
+        }
+        else
+        {
+            UpdateCount();
+        }
 
     }
     public void UpdateCount()
@@ -59,6 +84,10 @@ public class InventorySlot : MonoBehaviour
         if (item != null && item.ItemData.MaxStackSize > 1)
         {
             countText.text = item.Amount.ToString();
+        }
+        if (item != null && item.ItemData.MaxStackSize == 0)
+        {
+            countText.enabled = false;
         }
     }
 

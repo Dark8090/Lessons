@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ItemData : ScriptableObject
 {
     [Header("ItemInfo")]
-    public byte ID;
+    public int ID;
     public string Name;
     [TextArea(2, 4)] public string Description;
     public Sprite Sprite;

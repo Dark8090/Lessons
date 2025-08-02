@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc384da93e9c7241ade72141bb8ed05, type: 3}
   m_Name: Resource_Iron
   m_EditorClassIdentifier: 
-  ID: 0
-  Name: 
-  Description: 
+  ID: 1
+  Name: Iron
+  Description: Just iron
   Sprite: {fileID: 21300000, guid: 2e75c3f43541b23428a03ecc4b2ac5eb, type: 3}
   itemPrefab: {fileID: 1308368725284404776, guid: ae5d069087d98a84c8b176625d651b2d, type: 3}
   Type: 0

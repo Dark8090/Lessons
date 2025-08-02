@@ -32,6 +32,6 @@ public abstract class Item : MonoBehaviour
     /// <returns></returns>
     public int GetRemainingSpace() => MaxStackSize - Amount;
 
-     
+
     public abstract Item Clone();
 }
