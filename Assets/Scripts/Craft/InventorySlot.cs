@@ -68,6 +68,7 @@ public class InventorySlot : MonoBehaviour
         {
             return;
         }
+
         item.Amount -= amountToRemove;
         if (item.Amount <= 0)
         {

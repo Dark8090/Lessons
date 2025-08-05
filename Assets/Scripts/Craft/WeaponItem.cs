@@ -5,8 +5,4 @@ using UnityEngine;
 public class WeaponItem : Item
 {
 
-    public override Item Clone()
-    {
-        throw new System.NotImplementedException();
-    }
 }

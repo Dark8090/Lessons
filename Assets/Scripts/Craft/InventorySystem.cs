@@ -48,7 +48,9 @@ public class InventorySystem : MonoBehaviour
         {
             if (slots[i].GetItem() == null)
             {
-                slots[i].SetSlot(items[UnityEngine.Random.Range(0, items.Count)].item.itemPrefab, UnityEngine.Random.Range(1, 5));
+                slots[i].GetComponentInChildren<Item>().ItemData = items[UnityEngine.Random.Range(0, items.Count)].item;
+                Item item = slots[i].GetComponentInChildren<Item>();
+                slots[i].SetSlot(item, UnityEngine.Random.Range(1, 5));
                 
             }
         }

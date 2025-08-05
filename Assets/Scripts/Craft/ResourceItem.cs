@@ -5,12 +5,5 @@ using UnityEngine;
 
 public class ResourceItem : Item
 {
-    
 
-
-
-    public override Item Clone()
-    {
-        throw new System.NotImplementedException();
-    }
 }

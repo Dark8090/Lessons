@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 
 
-public abstract class Item : MonoBehaviour
+public class Item : MonoBehaviour
 {
     [SerializeField] protected ItemData itemData;
     [SerializeField] protected int amount;
 
-    public ItemData ItemData => itemData;
+    public ItemData ItemData { get => itemData; set => itemData = value; }
     public int Amount { get => amount; set => amount = value; }
 
     public int ID => ItemData.ID;
@@ -33,5 +33,5 @@ public abstract class Item : MonoBehaviour
     public int GetRemainingSpace() => MaxStackSize - Amount;
 
 
-    public abstract Item Clone();
+    
 }
