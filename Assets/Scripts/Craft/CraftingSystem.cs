@@ -13,38 +13,6 @@ public class CraftingSystem : MonoBehaviour
     //Buttons
     public void Create(CraftingRecipeData recipe)
     {
-        //CraftingRecipeData buffer = recipe;
-        //for (int i = 0; i < recipe.RequiredItemsForCraft.Length; i++) // 2
-        //{
-        //    for (int j = 0; j < Inventory.InventorySlot.Length; j++) // 18
-        //    {
-        //        if (Inventory.InventorySlot[j].GetItem() != null)
-        //        {
-        //            if (Inventory.InventorySlot[j].GetItem().Type == recipe.RequiredItemsForCraft[i].Type &&
-        //                Inventory.InventorySlot[j].GetItem().Amount >= recipe.RequiredAmountsForCraft[i]) // Слот 0 == в рецепте 0(false), слот 1 == в рецепте 0(true), ищем пока не найдем нужный тип
-        //                                                                                                  // Слот 1 >= в рецепте 0(false), нашли нужный тип - слот 9 >= в рецепте 0(true)
-        //            {
-
-
-        //                // тут нужна логика, с проверкой найденных предметов, если все предметы из RequiredItemsForCraft найдены и кол-ва хватает, то мы вычитаем/удаляем слоты найденых предметов
-        //                // и выдаем созданный предмет.
-        //                recipe.checkRequiredItem[i] = true;
-
-        //                if (recipe.checkRequiredItem.All(x => x))
-        //                {
-        //                    CompleteCraft(buffer);
-        //                    buffer = null;
-
-        //                }
-
-        //                break; // 1 ресурс проверили, вычли кол-во/удалили, ПОСТАВИЛИ чек бокс TRUE для 1 ресурса
-
-        //            }
-
-        //        }
-        //    }
-        //}
-
         if (!CanCraft(recipe))
         {
             print("Недостаточно ресурсов");

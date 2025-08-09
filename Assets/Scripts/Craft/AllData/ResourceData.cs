@@ -7,5 +7,4 @@ public class ResourceData : ItemData
 {
     [Header("Craft")]
     public bool isForCrafting = true;
-    //public CraftingRecipe[] craftingRecipes;
 }

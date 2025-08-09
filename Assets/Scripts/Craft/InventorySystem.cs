@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private List<InventoryItem> items;
 
     private int maxSlots = 18;
+
 
     public InventorySlot[] InventorySlot { get => slots; set => slots = value; }
 
@@ -48,10 +51,10 @@ public class InventorySystem : MonoBehaviour
         {
             if (slots[i].GetItem() == null)
             {
-                slots[i].GetComponentInChildren<Item>().ItemData = items[UnityEngine.Random.Range(0, items.Count)].item;
+                slots[i].GetComponentInChildren<Item>().ItemData = items[Random.Range(0, items.Count)].item;
                 Item item = slots[i].GetComponentInChildren<Item>();
-                slots[i].SetSlot(item, UnityEngine.Random.Range(1, 5));
-                
+                slots[i].SetSlot(item, Random.Range(1, 5));
+
             }
         }
         //UpdateInfo();

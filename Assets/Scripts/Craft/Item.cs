@@ -33,5 +33,5 @@ public class Item : MonoBehaviour
     public int GetRemainingSpace() => MaxStackSize - Amount;
 
 
-    
+
 }
