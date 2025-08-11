@@ -5,10 +5,6 @@ using UnityEngine;
 public class ManagerUI : MonoBehaviour
 {
 
-
-
-    // BUTTONS
-
     public void Hit(Enemy target)
     {
        

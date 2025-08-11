@@ -5,9 +5,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamagable
 {
     [SerializeField] private float health = 100f;
-    [SerializeField] private ArmorType armor;
+    [SerializeField] private float armor = 100f;
+    [SerializeField] private ArmorType armorType;
 
-    public bool IsDead() => health <= 0;
+
+
 
 
     private readonly Dictionary<(ArmorType, DamageType), float> DamageMultipliers = new()
@@ -30,10 +32,18 @@ public class Enemy : MonoBehaviour, IDamagable
     };
 
 
+    public bool IsDead() => health <= 0;
 
     public void TakeDamage(float damage, DamageType damageType)
     {
-        health -= damage;
+        float finalDamage = CalculateDamage(damage, damageType);
+        if (armor > finalDamage) armor -= finalDamage;
+        else
+        {
+            health -= finalDamage - armor;
+            armor = 0;
+        }
+
 
         if (IsDead())
         {
@@ -44,75 +54,18 @@ public class Enemy : MonoBehaviour, IDamagable
 
     private void Die()
     {
-        if (IsDead())
-        {
-            print("Enemy dead :(");
-        }
+        print("Enemy dead :(");
     }
 
 
-    private float CalculateDamage(float damage, DamageType damageType)
-    {
+    private float CalculateDamage(float damage, DamageType damageType) => damage * MultiplierDamage(damageType);
 
-        if (armor != ArmorType.None)
-        {
-            return 0;
-        }
-        else
-        {
-            return damage;
-        }
-    }
 
-    //private float MultiplierDamage(DamageType damageType) // Тест
-    //{
-    //    switch (armor)
-    //    {
-    //        case ArmorType.None:
-    //            switch (damageType)
-    //            {
-    //                case DamageType.Normal:
-    //                    return 0;
-    //                case DamageType.Magical:
-    //                    return 0;
-    //                case DamageType.Chaos:
-    //                    return 0;
-    //                default:
-    //                    return 0;
-    //            }
-    //        case ArmorType.Medium:
-    //            switch (damageType)
-    //            {
-    //                case DamageType.Normal:
-    //                    return 0;
-    //                case DamageType.Magical:
-    //                    return 0;
-    //                case DamageType.Chaos:
-    //                    return 0;
-    //                default:
-    //                    return 0;
-    //            }
-    //        case ArmorType.Fortified:
-    //            switch (damageType)
-    //            {
-    //                case DamageType.Normal:
-    //                    return 0;
-    //                case DamageType.Magical:
-    //                    return 0;
-    //                case DamageType.Chaos:
-    //                    return 0;
-    //                default:
-    //                    return 0;
-    //            }
-    //        default:
-    //            return 0;
-    //    }
 
-    //} 
     private float MultiplierDamage(DamageType damageType)
     {
-        (ArmorType, DamageType) key = (armor, damageType);
-
+        (ArmorType, DamageType) key = (armorType, damageType);
         return DamageMultipliers.TryGetValue(key, out float multiplier) ? multiplier : 1.0f;
     }
+
 }

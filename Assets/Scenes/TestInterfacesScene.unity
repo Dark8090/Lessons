@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   armor: 1
+  armorType: 1
 --- !u!4 &675293345
 Transform:
   m_ObjectHideFlags: 0
